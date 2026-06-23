@@ -1,0 +1,21 @@
+<div class="home-container">
+  <section class="hero">
+    <h1>Bienvenido a Transportes Web</h1>
+    <p>Tu plataforma de confianza para viajes en autobús</p>
+  </section>
+
+  <section class="transportes-section">
+    <h2>Transportes Disponibles</h2>
+    <div class="transportes-grid" *ngIf="transportes$ | async as transportes">
+      <div class="transporte-card" *ngFor="let transporte of transportes">
+        <h3>{{ transporte.nombre }}</h3>
+        <p><strong>Empresa:</strong> {{ transporte.empresa }}</p>
+        <p><strong>Ruta:</strong> {{ transporte.origen }} → {{ transporte.destino }}</p>
+        <p><strong>Fecha:</strong> {{ transporte.fecha }}</p>
+        <p><strong>Capacidad:</strong> {{ transporte.capacidad }} asientos</p>
+        <p class="precio"><strong>Precio:</strong> ${{ transporte.precio.toFixed(2) }} MXN</p>
+        <button (click)="comprarBillete(transporte.id)" class="btn-comprar">Comprar Billete</button>
+      </div>
+    </div>
+  </section>
+</div>

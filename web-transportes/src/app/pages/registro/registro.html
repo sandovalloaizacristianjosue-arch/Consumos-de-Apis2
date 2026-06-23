@@ -1,0 +1,34 @@
+<div class="registro-container">
+  <h1>Registro de Empresa</h1>
+  <p class="subtitle">Regístrate como empresa de transportes</p>
+  
+  <div class="registro-form" *ngIf="!enviado">
+    <form (ngSubmit)="enviarFormulario()">
+      <div class="form-group">
+        <label for="nombre">Nombre de la Empresa:</label>
+        <input type="text" id="nombre" [(ngModel)]="formulario.nombre" name="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="formulario.email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" [(ngModel)]="formulario.telefono" name="telefono" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empresa">Tipo de Empresa:</label>
+        <input type="text" id="empresa" [(ngModel)]="formulario.empresa" name="empresa" placeholder="Ej: Transportes Rápidos" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Registrarse</button>
+    </form>
+  </div>
+
+  <div class="success-message" *ngIf="enviado">
+    ✓ ¡Registro completado exitosamente!
+  </div>
+</div>

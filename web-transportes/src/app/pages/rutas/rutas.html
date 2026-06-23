@@ -1,0 +1,27 @@
+<div class="rutas-container">
+  <h1>Nuestras Rutas</h1>
+  <p class="subtitle">Explora todas nuestras rutas disponibles</p>
+  
+  <div class="rutas-table-container" *ngIf="rutas$ | async as rutas">
+    <table class="rutas-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre de la Ruta</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Distancia (km)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ruta of rutas">
+          <td>{{ ruta.id }}</td>
+          <td>{{ ruta.nombre }}</td>
+          <td>{{ ruta.origen }}</td>
+          <td>{{ ruta.destino }}</td>
+          <td>{{ ruta.distancia }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

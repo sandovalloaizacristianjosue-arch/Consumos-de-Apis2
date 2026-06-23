@@ -1,0 +1,56 @@
+<div class="ventas-container">
+  <h1>Ventas</h1>
+  <p class="subtitle">Gestiona las ventas de billetes</p>
+
+  <div class="ventas-form" *ngIf="!registrada">
+    <h2>Registrar Nueva Venta</h2>
+    <form (ngSubmit)="registrarVenta()">
+      <div class="form-group">
+        <label for="transporteId">ID Transporte:</label>
+        <input type="number" id="transporteId" [(ngModel)]="formulario.transporteId" name="transporteId" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pasajero">Nombre del Pasajero:</label>
+        <input type="text" id="pasajero" [(ngModel)]="formulario.pasajero" name="pasajero" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad de Billetes:</label>
+        <input type="number" id="cantidad" [(ngModel)]="formulario.cantidad" name="cantidad" min="1" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Registrar Venta</button>
+    </form>
+  </div>
+
+  <div class="success-message" *ngIf="registrada">
+    ✓ ¡Venta registrada exitosamente!
+  </div>
+
+  <div class="ventas-table-container">
+    <h2>Ventas Registradas</h2>
+    <table class="ventas-table" *ngIf="ventas$ | async as ventas">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Transporte ID</th>
+          <th>Pasajero</th>
+          <th>Cantidad</th>
+          <th>Total (MXN)</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venta of ventas">
+          <td>{{ venta.id }}</td>
+          <td>{{ venta.transporteId }}</td>
+          <td>{{ venta.pasajero }}</td>
+          <td>{{ venta.cantidad }}</td>
+          <td>{{ venta.total.toFixed(2) }}</td>
+          <td>{{ venta.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
